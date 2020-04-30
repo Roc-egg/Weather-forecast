@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.hp.weatherforecast"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -23,6 +23,15 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
 }
 
 dependencies {
@@ -31,7 +40,33 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //添加的依赖库
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    // Lifecycles 库
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    // livedata 库
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    //material  库
+    implementation 'com.google.android.material:material:1.1.0'
+    //retrofit2 库
+    implementation "com.squareup.retrofit2:retrofit:2.8.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.8.1"
+    implementation('com.github.ihsanbal:LoggingInterceptor:3.1.0-rc5') {
+        exclude group: 'org.json', module: 'json'
+    }
+    //kotlin 协程（https://github.com/Kotlin/kotlinx.coroutines）
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
+    //work-runtime
+    implementation "androidx.work:work-runtime:2.3.4"
+
+    //BaseRecyclerViewAdapterHelper(https://github.com/CymChad/BaseRecyclerViewAdapterHelper/blob/master/readme/0-BaseRecyclerViewAdapterHelper.md)
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.2'
+
+    //工具类AndroidUtilCode（https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md）
+    implementation 'com.blankj:utilcodex:1.28.3'
 }

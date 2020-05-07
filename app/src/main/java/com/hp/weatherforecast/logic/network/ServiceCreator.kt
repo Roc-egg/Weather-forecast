@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit
  * 修改备注：
  */
 object ServiceCreator {
+    //接口总入口
     private const val BASE_URL = "https://api.caiyunapp.com/"
 
 

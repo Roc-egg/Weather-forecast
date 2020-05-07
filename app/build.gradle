@@ -48,6 +48,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     // Lifecycles 库
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     // livedata 库
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     //material  库
@@ -69,4 +70,5 @@ dependencies {
 
     //工具类AndroidUtilCode（https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md）
     implementation 'com.blankj:utilcodex:1.28.3'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-rc01'
 }

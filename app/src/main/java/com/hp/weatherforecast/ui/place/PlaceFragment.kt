@@ -1,17 +1,19 @@
 package com.hp.weatherforecast.ui.place
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blankj.utilcode.util.ToastUtils
+import com.hp.weatherforecast.MainActivity
 import com.hp.weatherforecast.R
+import com.hp.weatherforecast.ui.weather.WeatherActivity
 import kotlinx.android.synthetic.main.fragment_place.*
 
 /**
@@ -38,9 +40,20 @@ class PlaceFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        if (activity is MainActivity && viewModel.isPlaceSaved()) {
+            val savedPlace = viewModel.getSavedPlace()
+            val intent = Intent(context, WeatherActivity::class.java).apply {
+                putExtra("location_lng", savedPlace.location.lng)
+                putExtra("location_lat", savedPlace.location.lat)
+                putExtra("place_name", savedPlace.name)
+            }
+            startActivity(intent)
+            activity?.finish()
+            return
+        }
         val linearLayoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = linearLayoutManager
-        adapter = PlaceAdapter(viewModel.placeList)
+        adapter = PlaceAdapter(viewModel, this)
         searchPlaceEdit.addTextChangedListener { editable ->
             val content = editable.toString()
             if (content.isNotEmpty()) {
@@ -62,7 +75,7 @@ class PlaceFragment : Fragment() {
                 viewModel.placeList.addAll(places)
                 adapter.notifyDataSetChanged()
             } else {
-                Toast.makeText(activity, "未能查询到任何地点", Toast.LENGTH_SHORT).show()
+                ToastUtils.showShort("未能查询到任何地点")
                 result.exceptionOrNull()?.printStackTrace()
             }
         })

@@ -9,7 +9,7 @@ import java.nio.charset.UnsupportedCharsetException
 
 /**
  * 项目：    WeatherForecast
- * 类描述：
+ * 类描述：  okhttp3自定义日志打印类
  * 创建人：  hp
  * 创建时间：2020/4/30 16:25
  * 修改人：  hp

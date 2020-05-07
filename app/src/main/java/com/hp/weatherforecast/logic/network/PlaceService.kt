@@ -1,6 +1,5 @@
 package com.hp.weatherforecast.logic.network
 
-import com.hp.weatherforecast.MyApplication
 import com.hp.weatherforecast.logic.model.PlaceResponse
 import retrofit2.Call
 import retrofit2.http.GET
